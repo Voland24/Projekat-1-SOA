@@ -1,0 +1,1 @@
+Inner API u Node (Moleculer) ima kontakt sa MongoDB
