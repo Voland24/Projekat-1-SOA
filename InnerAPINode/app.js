@@ -36,6 +36,11 @@ mongoose.connect(
     () => console.log("Connected to MongoDB/bookstore on PORT 27017... ")
 )
 
+app.get('/', (req,res)=>{
+  res.status(200).send({msg: 'I am alivee!'})
+})
+
+
 app.get("/getBookByTitle", (req, res) => {
     
     if(req.query.bookTitle == "")
