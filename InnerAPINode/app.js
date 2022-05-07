@@ -1,7 +1,9 @@
 const express = require("express")
 const cors = require("cors");
 const path = require("path");
-var request = require('request')
+const mongoose = require("mongoose")
+const BookModel = require("./models/bookmodel");
+const { NONAME } = require("dns");
 
 var dir = path.join(__dirname);
 
@@ -9,7 +11,7 @@ var dir = path.join(__dirname);
 
 //Dozvoljavam api calls sa ove adrese, to bi bila adresa tvog apija
 const corsOptions = {
-    origin: "http://localhost:4200",
+    origin: "http://localhost:4200", // ovo moze da ide u docker compose za ovu app, da ne bude hard code
   };
 
 const app = express()
@@ -19,23 +21,155 @@ app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 80; // isto i ovaj port, u docker compose
 
 
 app.listen(PORT, () => console.log("Internal Server is running on PORT 80...."));
 
-app.get("", (req, res) => {
+mongoose.connect(
+    "mongodb://localhost:27017/bookstore",  //i ovo moze da se stavi u docker compose
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    () => console.log("Connected to MongoDB/bookstore on PORT 27017... ")
+)
+
+app.get("/getBookByTitle", (req, res) => {
     
+    if(req.query.bookTitle == "")
+      res.status(400).send({msg : "Book title wasn't sent!"})
+    
+    BookModel.findOne(
+      {
+        bookTitle : req.query.bookTitle
+      },
+      (err,result)=>{
+        if (!err) res.status(200).send(result);
+        else res.status(500).send({msg : "Unable to get book " + err});
+      }
+    )  
+
 });
 
-app.post("", (req,res)=>{
-
-})
-
-app.put("", (req,res)=>{
-
-})
-
-app.delete("", (req,res)=>{
+app.get("/getBookByAuthor", (req, res) => {
     
+  if(req.query.bookAuthor == "")
+    res.status(400).send({msg : "Book author wasn't sent!"})
+  
+  BookModel.find(
+    {
+      bookAuthor : req.query.bookAuthor
+    },
+    (err,result)=>{
+      if (!err) res.status(200).send(result);
+      else res.status(500).send({msg : "Unable to get books " + err});
+    }
+  )  
+
+});
+
+app.get("/getBookByISBN", (req, res) => {
+    
+  if(req.query.ISBN == "")
+    res.status(400).send({msg : "Book ISBN wasn't sent!"})
+  
+  BookModel.findOne(
+    {
+      ISBN : req.query.ISBN
+    },
+    (err,result)=>{
+      if (!err) res.status(200).send(result);
+      else res.status(500).send({msg : "Unable to get book " + err});
+    }
+  )  
+
+});
+
+app.post("/insertNewBook", (req,res)=>{
+
+  if(!req.body)
+      res.status(400).send({msg : "Payload wasn't sent!"})
+  
+  BookModel.create(req.body, (err,result)=>{
+    if(err)
+    {
+      res.status(500).send({msg : "Something went wrong in DB... " + err})
+    }
+    else
+      res.status(200).send(result)
+  })    
+      
+
+})
+
+
+//salji mi ili ISBN ili naslov, preko oba cu da je trazim
+/*
+{
+  "bookTitle" : "",
+  "ISBN" : "",
+  "operation" : -1 ako uzima, +1 ako vraca knjigu, kao broj ga salji
+}
+Ostavi jedno prazno tj. ono po kojem se ne radi pretraga
+*/ 
+app.put("/updateBookQuantity", (req,res)=>{
+
+   var {filter, value} = req.body.bookTitle != "" ? {filter : "bookTitle", value: req.body.bookTitle} : {filter : "ISBN", value: req.body.ISBN}
+   if(req.body.ISBN == "")
+      res.status(400).send({msg : "Book title and ISBN weren't sent!"})
+
+   
+       BookModel.findOne(
+         {filter : value},
+         (err,result)=>{
+            if(!err)
+            {
+              if(result.quantity >= 1 || req.body.operation > 0 )
+              {
+                var newQuant = result.quantity + req.body.operation
+                BookModel.updateOne(
+                  {filter : value},
+                  {$set : {'quantity' : newQuant}},
+                  (err,fin)=>{
+                    if(!err)
+                    {
+                      res.status(200).send(fin)
+                    }
+                    else res.status(500).send({msg : "Couldn't update DB! " + err})
+                  }
+                )
+              }
+              else res.status(400).send({msg : "There are no books to check out"})
+            }
+            else res.status(500).send({msg : "Couldn't find book in DB!"})
+         }
+       )
+    
+})
+
+
+/*
+{
+  "bookTitle" : "",
+  "ISBN" : "",
+}
+
+ovaj oblik
+*/ 
+
+app.delete("/deleteABook", (req,res)=>{
+
+  var {filter, value} = req.query.bookTitle != "" ? {filter : "bookTitle", value: req.query.bookTitle} : {filter : "ISBN", value: req.query.ISBN}
+   if(req.query.ISBN == "")
+      res.status(400).send({msg : "Book title and ISBN weren't sent!"})
+
+   
+   BookModel.deleteOne(
+     {filter : value},
+     (err,result)=>{
+       if(err)
+          res.status(500).send({msg : "Book couldn't be deleted in DB"})
+       else 
+          res.status(200).send({msg: "Book successfully deleted"})   
+     }
+   )   
+
 })

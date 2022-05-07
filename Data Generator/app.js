@@ -40,6 +40,9 @@ app.get("/csvtojsonconvert", (req, res) => {
   .then((jsonArrayObj)=>{ //when parse finished, result will be emitted here.
      jsonArrayObj.forEach(book => {
          book.quantity = random()
+         delete book["ImageURLL"]
+         delete book["ImageURLS"]
+         delete book["ImageURLM"]
      })
      jsonData = JSON.stringify(jsonArrayObj)
      FileSystem.writeFile(outputJSON, jsonData, 'utf8', (err)=>{
