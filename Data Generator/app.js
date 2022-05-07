@@ -32,11 +32,15 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log("Server is running on PORT 5000...."));
 
+//dodato da imamo i quantity element kod knjige, kad se uzme, da moze dekrement i eventualno delete kasnije i sl
 app.get("/csvtojsonconvert", (req, res) => {
     
   csv()
   .fromFile(filePath)
   .then((jsonArrayObj)=>{ //when parse finished, result will be emitted here.
+     jsonArrayObj.forEach(book => {
+         book.quantity = random()
+     })
      jsonData = JSON.stringify(jsonArrayObj)
      FileSystem.writeFile(outputJSON, jsonData, 'utf8', (err)=>{
          if(err)
@@ -100,3 +104,8 @@ app.get('/sendAPIcall', (req,res)=>{
     })
 
 })
+
+
+function random(){
+    return Math.round(Math.random() * 100 + 10)
+}
