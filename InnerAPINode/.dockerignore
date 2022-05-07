@@ -1,10 +1,4 @@
-.env
 node_modules/
-data/
-LICENSE
-README.md
-.gitignore
-.git/
-example.env
-.travis.yml
-docker/
+Dockerfile
+.dockerignore
+docker-compose.yml

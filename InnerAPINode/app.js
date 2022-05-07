@@ -6,7 +6,7 @@ const BookModel = require("./models/bookmodel");
 
 const dotenv = require('dotenv')
 
-dotenv.config()
+dotenv.config({path : '.env'})
 
 
 var dir = path.join(__dirname);
@@ -31,8 +31,8 @@ const PORT = process.env.PORT || process.env.PORT //80; // isto i ovaj port, u d
 app.listen(PORT, () => console.log(`Internal Server is running on PORT ${process.env.PORT} ....`));
 
 mongoose.connect(
-    process.env.DB_URI, //"mongodb://localhost:27017/bookstore",  //i ovo moze da se stavi u docker compose
-    { useNewUrlParser: true, useUnifiedTopology: true },
+    process.env.MONGODB_URI, //"mongodb://localhost:27017/bookstore",  //i ovo moze da se stavi u docker compose
+    { dbName: process.env.DB_NAME , useNewUrlParser: true, useUnifiedTopology: true },
     () => console.log("Connected to MongoDB/bookstore on PORT 27017... ")
 )
 

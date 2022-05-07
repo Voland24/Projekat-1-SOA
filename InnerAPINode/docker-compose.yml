@@ -1,25 +1,27 @@
-version: "2"
+version: '3.9'
+
 services:
-  app:
-    container_name: app
-    restart: always
-    build: .
-    volumes:
-      - "./app:/src/app"
-    ports:
-      - "3000:3000"
-    links:
-      - mongo
-    depends_on:
-      - mongo  
-    environment:
-      WAIT_HOSTS: mongo:27017  
-  mongo:
-    container_name: mongo
-    image: mongo
-    volumes:
-      - ./data:/data/db
-    ports:
-      - "27017:27017"
+    #MongoDB service
+    mongo_db:
+      container_name: db_container
+      image: mongo:latest
+      restart: always
+      volumes: 
+        - mongo_db:/data/db
+
+    #Node api container
+    api:
+      container_name: api_container    
+      build : .
+      ports: 
+        - 3000:3000
+      environment:
+        PORT: 3000
+        MONGODB_URI: mongodb://mongo_db:27017
+        DB_NAME: bookstore
+        OUTER_API_URL: http://localhost:4200
+      depends_on: 
+        - mongo_db  
+
 volumes:
-  mongo_data:  
+  mongo_db: {}
