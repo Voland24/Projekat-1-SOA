@@ -1,11 +1,13 @@
-FROM node:alpine as base
 
-WORKDIR /app
+FROM node:latest
+RUN mkdir /src
+WORKDIR /src
+ADD /package.json /src/package.json
+RUN npm install
+COPY ./ ./
+EXPOSE 3000
 
-COPY package.json yarn.lock ./
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
+RUN chmod +x /wait
 
-RUN rm -rf node_modules && yarn install --frozen-lockfile && yarn cache clean
-
-COPY . .
-
-CMD ["node", "./app.js"]
+CMD /wait && npm start

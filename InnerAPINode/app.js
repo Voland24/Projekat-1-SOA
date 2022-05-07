@@ -28,7 +28,7 @@ app.use(express.json());
 const PORT = process.env.PORT || process.env.PORT //80; // isto i ovaj port, u docker compose
 
 
-app.listen(PORT, () => console.log("Internal Server is running on PORT 80...."));
+app.listen(PORT, () => console.log(`Internal Server is running on PORT ${process.env.PORT} ....`));
 
 mongoose.connect(
     process.env.DB_URI, //"mongodb://localhost:27017/bookstore",  //i ovo moze da se stavi u docker compose
