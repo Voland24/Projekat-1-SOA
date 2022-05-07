@@ -3,7 +3,11 @@ const cors = require("cors");
 const path = require("path");
 const mongoose = require("mongoose")
 const BookModel = require("./models/bookmodel");
-const { NONAME } = require("dns");
+
+const dotenv = require('dotenv')
+
+dotenv.config()
+
 
 var dir = path.join(__dirname);
 
@@ -11,7 +15,7 @@ var dir = path.join(__dirname);
 
 //Dozvoljavam api calls sa ove adrese, to bi bila adresa tvog apija
 const corsOptions = {
-    origin: "http://localhost:4200", // ovo moze da ide u docker compose za ovu app, da ne bude hard code
+    origin: process.env.OUTER_API_URL //"http://localhost:4200", // ovo moze da ide u docker compose za ovu app, da ne bude hard code
   };
 
 const app = express()
@@ -21,13 +25,13 @@ app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const PORT = process.env.PORT || 80; // isto i ovaj port, u docker compose
+const PORT = process.env.PORT || process.env.PORT //80; // isto i ovaj port, u docker compose
 
 
 app.listen(PORT, () => console.log("Internal Server is running on PORT 80...."));
 
 mongoose.connect(
-    "mongodb://localhost:27017/bookstore",  //i ovo moze da se stavi u docker compose
+    process.env.DB_URI, //"mongodb://localhost:27017/bookstore",  //i ovo moze da se stavi u docker compose
     { useNewUrlParser: true, useUnifiedTopology: true },
     () => console.log("Connected to MongoDB/bookstore on PORT 27017... ")
 )
