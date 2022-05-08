@@ -1,7 +1,8 @@
 const express = require("express")
 const cors = require("cors");
 const path = require("path");
-const mongoose = require("mongoose")
+//const mongoose = require("mongoose")
+require('./db_connect')
 const BookModel = require("./models/bookmodel");
 
 const dotenv = require('dotenv')
@@ -30,23 +31,18 @@ const PORT = process.env.PORT || process.env.PORT //80; // isto i ovaj port, u d
 
 app.listen(PORT, () => console.log(`Internal Server is running on PORT ${process.env.PORT} ....`));
 
-mongoose.connect(
-    process.env.MONGODB_URI, //"mongodb://localhost:27017/bookstore",  //i ovo moze da se stavi u docker compose
-    { dbName: process.env.DB_NAME , useNewUrlParser: true, useUnifiedTopology: true },
-    () => console.log("Connected to MongoDB/bookstore on PORT 27017... ")
-)
 
 app.get('/', (req,res)=>{
   res.status(200).send({msg: 'I am alivee!'})
 })
 
 
-app.get("/getBookByTitle", (req, res) => {
+app.get("/getBookByTitle", async (req, res) => {
     
     if(req.query.bookTitle == "")
       res.status(400).send({msg : "Book title wasn't sent!"})
     
-    BookModel.findOne(
+     BookModel.findOne(
       {
         bookTitle : req.query.bookTitle
       },
@@ -58,12 +54,12 @@ app.get("/getBookByTitle", (req, res) => {
 
 });
 
-app.get("/getBookByAuthor", (req, res) => {
+app.get("/getBookByAuthor", async (req, res) => {
     
   if(req.query.bookAuthor == "")
     res.status(400).send({msg : "Book author wasn't sent!"})
   
-  BookModel.find(
+   BookModel.find(
     {
       bookAuthor : req.query.bookAuthor
     },
@@ -75,12 +71,12 @@ app.get("/getBookByAuthor", (req, res) => {
 
 });
 
-app.get("/getBookByISBN", (req, res) => {
+app.get("/getBookByISBN",async (req, res) => {
     
   if(req.query.ISBN == "")
     res.status(400).send({msg : "Book ISBN wasn't sent!"})
   
-  BookModel.findOne(
+     BookModel.findOne(
     {
       ISBN : req.query.ISBN
     },
@@ -92,12 +88,12 @@ app.get("/getBookByISBN", (req, res) => {
 
 });
 
-app.post("/insertNewBook", (req,res)=>{
+app.post("/insertNewBook", async (req,res)=>{
 
   if(!req.body)
       res.status(400).send({msg : "Payload wasn't sent!"})
   
-  BookModel.create(req.body, (err,result)=>{
+     BookModel.create(req.body, (err,result)=>{
     if(err)
     {
       res.status(500).send({msg : "Something went wrong in DB... " + err})
@@ -119,7 +115,7 @@ app.post("/insertNewBook", (req,res)=>{
 }
 Ostavi jedno prazno tj. ono po kojem se ne radi pretraga
 */ 
-app.put("/updateBookQuantity", (req,res)=>{
+app.put("/updateBookQuantity", async (req,res)=>{
 
    var {filter, value} = req.body.bookTitle != "" ? {filter : "bookTitle", value: req.body.bookTitle} : {filter : "ISBN", value: req.body.ISBN}
    if(req.body.ISBN == "")
@@ -128,13 +124,13 @@ app.put("/updateBookQuantity", (req,res)=>{
    
        BookModel.findOne(
          {filter : value},
-         (err,result)=>{
+          async (err,result)=>{
             if(!err)
             {
               if(result.quantity >= 1 || req.body.operation > 0 )
               {
                 var newQuant = result.quantity + req.body.operation
-                BookModel.updateOne(
+                 await BookModel.updateOne(
                   {filter : value},
                   {$set : {'quantity' : newQuant}},
                   (err,fin)=>{
@@ -164,14 +160,14 @@ app.put("/updateBookQuantity", (req,res)=>{
 ovaj oblik
 */ 
 
-app.delete("/deleteABook", (req,res)=>{
+app.delete("/deleteABook", async (req,res)=>{
 
   var {filter, value} = req.query.bookTitle != "" ? {filter : "bookTitle", value: req.query.bookTitle} : {filter : "ISBN", value: req.query.ISBN}
    if(req.query.ISBN == "")
       res.status(400).send({msg : "Book title and ISBN weren't sent!"})
 
    
-   BookModel.deleteOne(
+     BookModel.deleteOne(
      {filter : value},
      (err,result)=>{
        if(err)
