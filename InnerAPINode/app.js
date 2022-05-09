@@ -124,20 +124,20 @@ app.put("/updateBookQuantity", async (req,res)=>{
    
        BookModel.findOne(
          {filter : value},
-          async (err,result)=>{
+           (err,result)=>{
             if(!err)
             {
               if(result.quantity >= 1 || req.body.operation > 0 )
               {
                 var newQuant = result.quantity + req.body.operation
-                 await BookModel.updateOne(
+                  BookModel.updateOne(
                   {filter : value},
                   {$set : {'quantity' : newQuant}},
                   (err,fin)=>{
                     if(!err)
                     {
                       result.quantity += req.body.operation
-                      res.status(200).send(result)
+                      res.status(200).send(tmp)
                     }
                     else res.status(500).send({msg : "Couldn't update DB! " + err})
                   }
