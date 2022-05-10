@@ -42,9 +42,9 @@ app.get("/getBookByTitle", async (req, res) => {
     if(req.query.bookTitle == "")
       res.status(400).send({msg : "Book title wasn't sent!"})
     
-     BookModel.findOne(
+     BookModel.find(
       {
-        bookTitle : req.query.bookTitle
+        bookTitle : { $regex: req.query.bookTitle, $options: 'i' }
       },
       (err,result)=>{
         if (!err) res.status(200).send(result);
@@ -61,7 +61,7 @@ app.get("/getBookByAuthor", async (req, res) => {
   
    BookModel.find(
     {
-      bookAuthor : req.query.bookAuthor
+      bookAuthor : { $regex: req.query.bookAuthor, $options: 'i' }
     },
     (err,result)=>{
       if (!err) res.status(200).send(result);
@@ -168,19 +168,17 @@ ovaj oblik
 */ 
 
 app.delete("/deleteABook", async (req,res)=>{
-
-  var {filter, value} = req.query.bookTitle != "" ? {filter : "bookTitle", value: req.query.bookTitle} : {filter : "ISBN", value: req.query.ISBN}
    if(req.query.ISBN == "")
       res.status(400).send({msg : "Book title and ISBN weren't sent!"})
 
    
      BookModel.deleteOne(
-     {filter : value},
+     { ISBN: req.query.ISBN },
      (err,result)=>{
        if(err)
           res.status(500).send({msg : "Book couldn't be deleted in DB"})
        else 
-          res.status(200).send({msg: "Book successfully deleted"})   
+          res.status(200).send({msg: result})   
      }
    )   
 
