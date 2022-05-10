@@ -117,21 +117,27 @@ Ostavi jedno prazno tj. ono po kojem se ne radi pretraga
 */ 
 app.put("/updateBookQuantity", async (req,res)=>{
 
-   var {filter, value} = req.body.bookTitle != "" ? {filter : "bookTitle", value: req.body.bookTitle} : {filter : "ISBN", value: req.body.ISBN}
-   if(req.body.ISBN == "")
+  
+
+   //var filter = req.body.bookTitle != "" ? "bookTitle" : "ISBN"
+   //var value = req.body.bookTitle != "" ? req.body.bookTitle : req.body.ISBN
+    
+   if(req.body.ISBN == "" && req.body.bookTitle == "" )
       res.status(400).send({msg : "Book title and ISBN weren't sent!"})
 
    
        BookModel.findOne(
-         {filter : value},
+        {$or: [{ bookTitle: req.body.bookTitle }, { ISBN: req.body.ISBN }]},
            (err,result)=>{
             if(!err)
             {
+              console.log(result)
+              console.log(req.body)
               if(result.quantity >= 1 || req.body.operation > 0 )
               {
                 var newQuant = result.quantity + req.body.operation
                   BookModel.updateOne(
-                  {filter : value},
+                  {$or: [{ bookTitle: req.body.bookTitle }, { ISBN: req.body.ISBN }]},
                   {$set : {'quantity' : newQuant}},
                   (err,fin)=>{
                     if(!err)

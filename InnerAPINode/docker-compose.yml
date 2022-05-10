@@ -8,8 +8,8 @@ services:
       build : .
       ports: 
         - "8080:8080"
-      dns:
-        - "8.8.8.8"  
+      #dns:
+       # - "8.8.8.8"  
       depends_on: 
         - mongo_db 
       environment:
@@ -24,8 +24,8 @@ services:
       container_name: db_container
       image: mongo:latest
       restart: always
-      dns:
-        - "8.8.8.8" 
+      #dns:
+       # - "8.8.8.8" 
       ports:
        - "27017:27017"
       volumes: 
