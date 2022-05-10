@@ -137,7 +137,7 @@ app.put("/updateBookQuantity", async (req,res)=>{
                     if(!err)
                     {
                       result.quantity += req.body.operation
-                      res.status(200).send(tmp)
+                      res.status(200).send(result)
                     }
                     else res.status(500).send({msg : "Couldn't update DB! " + err})
                   }

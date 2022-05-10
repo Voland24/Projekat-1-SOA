@@ -15,6 +15,7 @@ services:
         WAIT_HOSTS_TIMEOUT: 300
         WAIT_SLEEP_INTERVAL: 30
         WAIT_HOST_CONNECT_TIMEOUT: 30
+        MONGODB_CONNSTRING: mongodb://db_container:27017/books
 
     #MongoDB service
     mongo_db:
