@@ -1,0 +1,34 @@
+metadata:
+  name: sentiment-analysis
+  labels:
+    nuclio.io/project-name: default
+spec:
+  description: "Identifies sentiments in the body strings"
+  handler: "sentiments:handler"
+  runtime: "python:3.7"
+  resources:
+    requests:
+      cpu: 25m
+      memory: 1Mi
+  minReplicas: 1
+  maxReplicas: 1
+  triggers:
+    default-http:
+      class: ""
+      kind: http
+      name: default-http
+      maxWorkers: 1
+  version: 1
+  build:
+    commands:
+      - 'pip install requests vaderSentiment'
+    runtimeAttributes:
+      repositories: []
+    codeEntryType: sourceCode
+    timestamp: 1653333349
+  loggerSinks:
+    - level: debug
+  platform: {}
+  securityContext: {}
+  priorityClassName: igz-workload-medium
+  eventTimeout: ""
