@@ -27,7 +27,8 @@ namespace APIGateway.Clients
 		{
 			_client = client;
 			// TODO load from configuration
-			_client.BaseAddress = new Uri("https://openlibrary.org/");
+			var openLibrary = configuration.GetSection("OpenLibrary").GetValue<string>("Endpoint");
+			_client.BaseAddress = new Uri(openLibrary ?? "https://openlibrary.org/");
 			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 		}
 

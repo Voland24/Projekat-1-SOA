@@ -1,6 +1,7 @@
 ﻿using APIGateway.Clients;
 using APIGateway.DTOs;
 using APIGateway.Models;
+using APIGateway.MQTT;
 using APIGateway.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,34 +16,51 @@ namespace APIGateway.Controllers
 	[ApiController]
 	public class BooksController : ControllerBase
 	{
-		private IOpenLibraryClient _client;
 		private IBookService _bookService;
-
-		public BooksController(IBookService bookService, IOpenLibraryClient client)
+		private IMQTTService _mqttService;
+		public BooksController(IBookService bookService, IMQTTService mqttService)
 		{
 			_bookService = bookService;
-			_client = client;
+			_mqttService = mqttService;
 		}
 
 		[HttpGet]
 		[Route("searchTitle")]
 		public async Task<BooksResponse> SearchByTitle([FromQuery(Name = "title")] string title)
 		{
-			return await _bookService.GetBookByTitle(title);
+			var result = await _bookService.GetBookByTitle(title);
+			await _mqttService.PublishEvent(new MQTTEvent
+			{
+				Title = title,
+				InLibrary = result.InLibrary.Count
+			});
+			return result;
 		}
 
 		[HttpGet]
 		[Route("searchAuthor")]
 		public async Task<BooksResponse> SearchByAuthor([FromQuery(Name = "author")] string author)
 		{
-			return await _bookService.GetBookByAuthor(author);
+			var result = await _bookService.GetBookByAuthor(author);
+			await _mqttService.PublishEvent(new MQTTEvent
+			{
+				Author = author,
+				InLibrary = result.InLibrary.Count
+			});
+			return result;
 		}
 
 		[HttpGet]
 		[Route("")]
 		public async Task<BooksResponse> SearchByISBN([FromQuery(Name = "isbn")] string isbn)
 		{
-			return await _bookService.GetBookByISBN(isbn);
+			var result = await _bookService.GetBookByISBN(isbn);
+			await _mqttService.PublishEvent(new MQTTEvent
+			{
+				ISBN = isbn,
+				InLibrary = result.InLibrary.Count
+			});
+			return result;
 		}
 
 		[HttpPost]

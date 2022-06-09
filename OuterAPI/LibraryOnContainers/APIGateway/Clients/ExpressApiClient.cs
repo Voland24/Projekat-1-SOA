@@ -28,7 +28,8 @@ namespace APIGateway.Clients
 		{
 			_client = client;
 			// TODO: load from configuration
-			_client.BaseAddress = new Uri("http://localhost:8080/");
+			var openLibrary = configuration.GetSection("ExpressApi").GetValue<string>("Endpoint");
+			_client.BaseAddress = new Uri(openLibrary ?? "http://localhost:8080/");
 			_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 		}
 

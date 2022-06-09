@@ -1,0 +1,66 @@
+version : '3.9'
+
+services:
+  gateway:
+    container_name: gateway
+    build:
+      context: ./OuterAPI/LibraryOnContainers
+      dockerfile: ./APIGateway/Dockerfile
+    ports:
+     - 5001:80
+    depends_on:
+     - mosquitto
+     - data-service
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/log:/mosquitto/log
+      - ./mosquitto/data:/mosquitto/data
+  ekuiper:
+    image: lfedge/ekuiper:1.5-slim
+    container_name: ekuiper
+    depends_on:
+      - mosquitto
+    ports:
+      - "9081:9081"
+  ekuiper-manager:
+    image: emqx/ekuiper-manager:1.5
+    container_name: ekuiper-manager
+    ports:
+      - "9082:9082"
+  # Nodejs service
+  data-service:
+    container_name: nodejs
+    build: ./InnerAPINode
+    ports: 
+      - "8080:8080"
+    #dns:
+      # - "8.8.8.8"  
+    depends_on: 
+      - mongo_db 
+    environment:
+      WAIT_HOSTS: mongo_db:27017  
+      WAIT_HOSTS_TIMEOUT: 300
+      WAIT_SLEEP_INTERVAL: 30
+      WAIT_HOST_CONNECT_TIMEOUT: 30
+      MONGODB_CONNSTRING: mongodb://mongo:27017/books
+
+  #MongoDB service
+  mongo_db:
+    container_name: mongo
+    image: mongo:latest
+    restart: always
+    #dns:
+      # - "8.8.8.8" 
+    ports:
+      - "27017:27017"
+    volumes: 
+      - mongo_db:/data/db
+
+volumes:
+  mongo_db: {}

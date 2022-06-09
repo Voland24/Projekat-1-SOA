@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Swashbuckle.AspNetCore;
 using APIGateway.Services;
+using APIGateway.MQTT;
 
 namespace APIGateway
 {
@@ -31,6 +32,7 @@ namespace APIGateway
 			services.AddHttpClient<IOpenLibraryClient, OpenLibraryClient>();
 			services.AddHttpClient<IExpressApiClient ,ExpressApiClient>();
 			services.AddScoped<IBookService, BookService>();
+			services.AddSingleton<IMQTTService, MQTTService>();
 
 			services.AddControllers();
 			services.AddSwaggerGen();
