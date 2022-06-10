@@ -28,6 +28,8 @@ services:
       - mosquitto
     ports:
       - "9081:9081"
+    volumes:
+      - ekuiper:/kuiper/data
   ekuiper-manager:
     image: emqx/ekuiper-manager:1.5
     container_name: ekuiper-manager
@@ -64,3 +66,4 @@ services:
 
 volumes:
   mongo_db: {}
+  ekuiper: {}
