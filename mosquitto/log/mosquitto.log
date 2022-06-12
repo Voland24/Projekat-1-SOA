@@ -1006,3 +1006,41 @@
 1655058003: Client 47564b0c-ea7c-11ec-a8a4-0242c0a83008 disconnected.
 1655058035: mosquitto version 2.0.14 terminating
 1655058035: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655069990: mosquitto version 2.0.14 starting
+1655069990: Config loaded from /mosquitto/config/mosquitto.conf.
+1655069990: Opening ipv4 listen socket on port 1883.
+1655069990: Opening ipv6 listen socket on port 1883.
+1655069990: mosquitto version 2.0.14 running
+1655069991: New connection from 192.168.80.8:48008 on port 1883.
+1655069991: New client connected from 192.168.80.8:48008 as 30c682ed-ea98-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655069991: Client 30c682ed-ea98-11ec-bfdd-0242c0a85008 disconnected.
+1655069991: New connection from 192.168.80.8:48012 on port 1883.
+1655069991: New client connected from 192.168.80.8:48012 as 30caafdd-ea98-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655069991: Client 30caafdd-ea98-11ec-bfdd-0242c0a85008 disconnected.
+1655069992: New connection from 192.168.80.7:40020 on port 1883.
+1655069992: New client connected from 192.168.80.7:40020 as mqtt_f98b10e536d5 (p2, c1, k60, u'emqx').
+1655069992: Client mqtt_f98b10e536d5 closed its connection.
+1655070387: New connection from 192.168.80.7:40074 on port 1883.
+1655070387: New client connected from 192.168.80.7:40074 as mqtt_7a96d0d1e107 (p2, c1, k60, u'emqx').
+1655070387: Client mqtt_7a96d0d1e107 closed its connection.
+1655070635: New connection from 192.168.80.7:40080 on port 1883.
+1655070635: New client connected from 192.168.80.7:40080 as mqtt_4d02d8915a21 (p2, c1, k60, u'emqx').
+1655070895: Client mqtt_4d02d8915a21 closed its connection.
+1655070897: New connection from 192.168.80.7:40090 on port 1883.
+1655070897: New client connected from 192.168.80.7:40090 as mqtt_e1f6e8816297 (p2, c1, k60, u'emqx').
+1655070956: New connection from 192.168.80.8:48114 on port 1883.
+1655070956: New client connected from 192.168.80.8:48114 as 6facded3-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655070956: New connection from 192.168.80.8:48116 on port 1883.
+1655070956: New client connected from 192.168.80.8:48116 as 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655070956: New connection from 192.168.80.8:48120 on port 1883.
+1655070956: New client connected from 192.168.80.8:48120 as 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655070956: New connection from 192.168.80.8:48122 on port 1883.
+1655070956: New client connected from 192.168.80.8:48122 as 7007f422-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655070967: New connection from 192.168.80.9:51190 on port 1883.
+1655070967: New client connected from 192.168.80.9:51190 as 403cf0f393694570be9f4cf8c22432fd (p2, c1, k15).
+1655070971: Client mqtt_e1f6e8816297 closed its connection.
+1655071113: New connection from 192.168.80.7:40148 on port 1883.
+1655071113: New client connected from 192.168.80.7:40148 as mqtt_54440e5a32b5 (p2, c1, k60, u'emqx').
+1655071146: Client mqtt_54440e5a32b5 closed its connection.
+1655071191: New connection from 192.168.80.7:40188 on port 1883.
+1655071191: New client connected from 192.168.80.7:40188 as mqtt_515b883d8e12 (p2, c1, k60, u'emqx').
