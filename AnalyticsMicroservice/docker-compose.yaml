@@ -1,0 +1,24 @@
+version : '3.9'
+
+services:
+
+#Analytics Node service
+  analytics-service:
+    container_name: analyticsNodeService
+    build: .
+    ports:
+      - "5003:5003"
+    depends_on: 
+     - mosquitto
+
+  mosquitto:
+    container_name: mosquitto
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ../mosquitto/config:/mosquitto/config
+      - ../mosquitto/log:/mosquitto/log
+      - ../mosquitto/data:/mosquitto/data
+          

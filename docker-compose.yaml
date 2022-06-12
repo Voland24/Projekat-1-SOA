@@ -51,7 +51,7 @@ services:
       WAIT_SLEEP_INTERVAL: 30
       WAIT_HOST_CONNECT_TIMEOUT: 30
       MONGODB_CONNSTRING: mongodb://mongo:27017/books
-
+  
   #MongoDB service
   mongo_db:
     container_name: mongo
@@ -64,6 +64,29 @@ services:
     volumes: 
       - mongo_db:/data/db
 
+  #Analytics Node service
+  analytics-service:
+    container_name: analyticsNodeService
+    build: ./AnalyticsMicroservice
+    ports:
+      - "5003:5003"
+    depends_on:
+     - mosquitto
+     - influx_db  
+
+  #InfluxDB service
+  influx_db:
+    container_name: influx-db
+    image: influxdb:latest
+    restart: always
+    ports: 
+      - "8086:8086"
+    volumes: 
+       - ./influxdb/data:/var/lib/influxdb
+       - ./influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+       - ./influxdb/init:/docker-entrypoint-initdb.d
+
 volumes:
   mongo_db: {}
   ekuiper: {}
+  influx_db: {}
