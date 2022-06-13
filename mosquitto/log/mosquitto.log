@@ -1044,3 +1044,4 @@
 1655071146: Client mqtt_54440e5a32b5 closed its connection.
 1655071191: New connection from 192.168.80.7:40188 on port 1883.
 1655071191: New client connected from 192.168.80.7:40188 as mqtt_515b883d8e12 (p2, c1, k60, u'emqx').
+1655071791: Saving in-memory database to /mosquitto/data//mosquitto.db.

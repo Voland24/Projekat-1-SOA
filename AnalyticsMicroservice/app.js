@@ -18,6 +18,8 @@ const influxDB = new InfluxDB({url: 'http://influx_db:8086', token: API_TOKEN})
 
 const influxWriteAPI = influxDB.getWriteApi(org, bucket)
 
+const influxQueryAPI = influxDB.getQueryApi(org)
+
 influxWriteAPI.useDefaultTags({region: 'Serbia'})
 
 const app = express()
@@ -79,12 +81,37 @@ client.on('message', (topic, payload) =>{
 
     var jsonPayload = bufferTojson(payload)[0];
 
+
+    const fluxQuery = 'from(bucket:"Library") |> range(start: -30m) |> filter(fn: (r) => r._measurement == "bookQuery")|> filter(fn: (r) => r._field == "count")|> aggregateWindow(every: 15m, fn: mean)'
+
+    const fluxObserver = {
+        next(row, tableMeta) {
+          const o = tableMeta.toObject(row)
+          console.log(
+            `${o._time} ${o._measurement} in ${o.region} (${o.sensor_id}): ${o._field}=${o._value}`
+          )
+        },
+        error(error) {
+          console.error(error)
+          console.log('\nFinished ERROR')
+        },
+        complete() {
+          console.log('\nFinished SUCCESS')
+        }
+      }
+      
+      /** Execute a query and receive line table metadata and rows. */
+      influxQueryAPI.queryRows(fluxQuery, fluxObserver)
+
     const point1 = new Point('bookQuery')
                 .tag('region', 'Serbia')
                 .floatField('count',jsonPayload["count"] )
                 .stringField('which', jsonPayload["which"])
 
     influxWriteAPI.writePoint(point1)
+
+
+    
 
     /*influxWriteAPI.close().then(() => {
          console.log('WRITE FINISHED')
