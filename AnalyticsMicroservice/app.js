@@ -17,7 +17,7 @@ var packageDefinition = protoLoader.loadSync(
      oneofs: true
     });
 
-var hello_proto = grpc.loadPackageDefinition(packageDefinition).Library;    
+var hello_proto = grpc.loadPackageDefinition(packageDefinition).alert;
 // {InfluxDB, Point} from '@influxdata/influxdb-client'
 //const influxClient = require('./influx_db')
 
@@ -35,7 +35,7 @@ const influxQueryAPI = influxDB.getQueryApi(org)
 
 influxWriteAPI.useDefaultTags({region: 'Serbia'})
 
-var clientGRPC = new hello_proto.LibraryService('http://notifications-service:50051', grpc.credentials.createInsecure())
+var clientGRPC = new hello_proto.AlertService('http://notifications-service:50051', grpc.credentials.createInsecure())
 
 const app = express()
 
@@ -121,7 +121,7 @@ client.on('message', (topic, payload) =>{
           console.log('\nFinished SUCCESS')
           if(forSendingInfo != "")
           {
-            clientGRPC.listBookQueries({info: stringPayload}, function(err,response){
+            clientGRPC.QueryFluxAlert({info: stringPayload}, function(err,response){
                 console.log('Status: ' + response)
                 forSendingInfo = ""
               })

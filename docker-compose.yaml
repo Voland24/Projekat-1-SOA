@@ -85,6 +85,14 @@ services:
        - ./influxdb/data:/var/lib/influxdb
        - ./influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
        - ./influxdb/init:/docker-entrypoint-initdb.d
+  
+  notifications-service:
+    container_name: notifications-service
+    build:
+      context: ./OuterAPI/LibraryOnContainers
+      dockerfile: ./NotificationsMicroservice/Dockerfile
+    ports:
+     - 50051:80
 
 volumes:
   mongo_db: {}

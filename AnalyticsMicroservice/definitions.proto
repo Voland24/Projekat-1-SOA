@@ -1,15 +1,15 @@
 syntax = "proto3";
 
-package Library;
+package alert;
 
-service LibraryService {
-    rpc listBookQueries(bookQuery) returns (statusMessage) {}
+service AlertService {
+    rpc QueryFluxAlert(QueryFluxInfo) returns (StatusMessage) {}
 }
 
-message bookQuery {
+message QueryFluxInfo {
     string info = 1;
 }
 
-message statusMessage {
+message StatusMessage {
     string resultInfo = 1;
 }

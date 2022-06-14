@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NotificationsMicroservice
 {
-	public class AlertService : Alerter.AlerterBase
+	public class AlertService : Alert.AlertService.AlertServiceBase
 	{
 		private readonly ILogger<AlertService> _logger;
 		public AlertService(ILogger<AlertService> logger)
@@ -15,10 +15,13 @@ namespace NotificationsMicroservice
 			_logger = logger;
 		}
 
-		public override Task<Empty> Alert(AlertInfo request, ServerCallContext context)
+		public override Task<Alert.StatusMessage> QueryFluxAlert(Alert.QueryFluxInfo request, ServerCallContext context)
 		{
 			_logger.LogDebug("Alert method invoked!");
-			return Task.FromResult(new Empty());
+			return Task.FromResult(new Alert.StatusMessage
+			{
+				ResultInfo = "Success"
+			});
 		}
 	}
 }

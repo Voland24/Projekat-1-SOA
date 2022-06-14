@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Grpc.Net.Client;
-using NotificationsMicroservice;
+using Alert;
 
 namespace GrpcTestApp
 {
@@ -10,12 +10,12 @@ namespace GrpcTestApp
 		static async Task Main(string[] args)
 		{
 			var channel = GrpcChannel.ForAddress("https://localhost:5001");
-			var client = new Alerter.AlerterClient(channel);
-			var reply = await client.AlertAsync(new AlertInfo
+			var client = new AlertService.AlertServiceClient(channel);
+			var reply = await client.QueryFluxAlertAsync(new QueryFluxInfo
 			{
-				QueryCount = 4
+				Info = "average two high"
 			});
-			Console.WriteLine("Got reply");
+			Console.WriteLine($"Got reply {reply}");
 		}
 	}
 }

@@ -1,16 +1,15 @@
 syntax = "proto3";
 
-option csharp_namespace = "NotificationsMicroservice";
-
 package alert;
-service Alerter {
-  // Sends a greeting
-  rpc Alert (AlertInfo) returns (Empty);
+
+service AlertService {
+    rpc QueryFluxAlert(QueryFluxInfo) returns (StatusMessage) {}
 }
 
-message AlertInfo {
-  int32 queryCount = 1;
+message QueryFluxInfo {
+    string info = 1;
 }
 
-message Empty {
+message StatusMessage {
+    string resultInfo = 1;
 }
