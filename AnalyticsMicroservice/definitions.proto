@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package Library;
+
+service LibraryService {
+    rpc listBookQueries(bookQuery) returns (statusMessage) {}
+}
+
+message bookQuery {
+    string info = 1;
+}
+
+message statusMessage {
+    string resultInfo = 1;
+}
