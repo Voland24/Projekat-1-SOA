@@ -1045,3 +1045,137 @@
 1655071191: New connection from 192.168.80.7:40188 on port 1883.
 1655071191: New client connected from 192.168.80.7:40188 as mqtt_515b883d8e12 (p2, c1, k60, u'emqx').
 1655071791: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655113342: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655115143: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655116944: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655118745: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655120546: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655122347: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655124148: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655125949: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655127750: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655130890: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655130890: Client 6facded3-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655130890: Client 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655130890: Client 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655130890: Client 7007f422-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655130890: Client 403cf0f393694570be9f4cf8c22432fd has exceeded timeout, disconnecting.
+1655130890: Client mqtt_515b883d8e12 has exceeded timeout, disconnecting.
+1655130891: New connection from 192.168.80.8:48230 on port 1883.
+1655130891: New connection from 192.168.80.8:48234 on port 1883.
+1655130891: New connection from 192.168.80.8:48232 on port 1883.
+1655130891: New connection from 192.168.80.8:48236 on port 1883.
+1655130891: New client connected from 192.168.80.8:48230 as 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655130891: New client connected from 192.168.80.8:48234 as 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655130891: New client connected from 192.168.80.8:48232 as 6facded3-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655130891: New client connected from 192.168.80.8:48236 as 7007f422-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655130896: New connection from 192.168.80.7:40240 on port 1883.
+1655130897: New client connected from 192.168.80.7:40240 as mqtt_515b883d8e12 (p2, c1, k60, u'emqx').
+1655132755: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655132755: Client 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655132755: Client 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655132755: Client 6facded3-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655132755: Client 7007f422-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655132755: Client mqtt_515b883d8e12 has exceeded timeout, disconnecting.
+1655132756: New connection from 192.168.80.8:48244 on port 1883.
+1655132756: New connection from 192.168.80.8:48246 on port 1883.
+1655132756: New connection from 192.168.80.8:48248 on port 1883.
+1655132756: New connection from 192.168.80.8:48250 on port 1883.
+1655132756: New client connected from 192.168.80.8:48244 as 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655132756: New client connected from 192.168.80.8:48246 as 6facded3-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655132756: New client connected from 192.168.80.8:48248 as 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655132756: New client connected from 192.168.80.8:48250 as 7007f422-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655132757: New connection from 192.168.80.7:40254 on port 1883.
+1655132757: New client connected from 192.168.80.7:40254 as mqtt_515b883d8e12 (p2, c1, k60, u'emqx').
+1655134556: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655136357: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655138960: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655138960: Client 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655138960: Client 6facded3-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655138960: Client 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655138960: Client 7007f422-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655138960: Client mqtt_515b883d8e12 has exceeded timeout, disconnecting.
+1655138960: New connection from 192.168.80.8:48256 on port 1883.
+1655138960: New connection from 192.168.80.8:48258 on port 1883.
+1655138960: New connection from 192.168.80.8:48260 on port 1883.
+1655138960: New connection from 192.168.80.8:48262 on port 1883.
+1655138960: New client connected from 192.168.80.8:48256 as 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655138960: New client connected from 192.168.80.8:48258 as 6facded3-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655138960: New client connected from 192.168.80.8:48260 as 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655138960: New client connected from 192.168.80.8:48262 as 7007f422-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655139113: Client 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655139113: Client 6facded3-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655139113: Client 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655139113: Client 7007f422-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655139113: New connection from 192.168.80.7:40268 on port 1883.
+1655139113: New connection from 192.168.80.8:48272 on port 1883.
+1655139113: New connection from 192.168.80.8:48274 on port 1883.
+1655139113: New connection from 192.168.80.8:48276 on port 1883.
+1655139113: New connection from 192.168.80.8:48278 on port 1883.
+1655139113: New client connected from 192.168.80.7:40268 as mqtt_515b883d8e12 (p2, c1, k60, u'emqx').
+1655139113: New client connected from 192.168.80.8:48272 as 6facded3-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655139113: New client connected from 192.168.80.8:48274 as 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655139113: New client connected from 192.168.80.8:48276 as 7007f422-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655139113: New client connected from 192.168.80.8:48278 as 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655140761: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655142562: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655144363: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655149852: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655149852: Client mqtt_515b883d8e12 has exceeded timeout, disconnecting.
+1655149852: Client 6facded3-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655149852: Client 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655149852: Client 7007f422-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655149852: Client 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655149852: New connection from 192.168.80.8:48282 on port 1883.
+1655149852: New connection from 192.168.80.8:48284 on port 1883.
+1655149852: New connection from 192.168.80.8:48286 on port 1883.
+1655149852: New connection from 192.168.80.8:48288 on port 1883.
+1655149852: New client connected from 192.168.80.8:48282 as 6facded3-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655149852: New client connected from 192.168.80.8:48284 as 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655149852: New client connected from 192.168.80.8:48286 as 7007f422-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655149852: New client connected from 192.168.80.8:48288 as 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655153995: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655153995: Client 6facded3-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655153995: Client 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655153995: Client 7007f422-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655153995: Client 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 has exceeded timeout, disconnecting.
+1655153995: New connection from 192.168.80.7:40296 on port 1883.
+1655153995: New connection from 192.168.80.8:48296 on port 1883.
+1655153995: New connection from 192.168.80.8:48298 on port 1883.
+1655153995: New connection from 192.168.80.8:48300 on port 1883.
+1655153995: New connection from 192.168.80.8:48302 on port 1883.
+1655153995: New client connected from 192.168.80.7:40296 as mqtt_515b883d8e12 (p2, c1, k60, u'emqx').
+1655153995: New client connected from 192.168.80.8:48296 as 7007f422-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655153995: New client connected from 192.168.80.8:48298 as 6facded3-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655153995: New client connected from 192.168.80.8:48300 as 6fad6a84-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655153995: New client connected from 192.168.80.8:48302 as 7007bdb7-ea9a-11ec-bfdd-0242c0a85008 (p1, c1, k30).
+1655154323: New connection from 192.168.80.9:51382 on port 1883.
+1655154323: New client connected from 192.168.80.9:51382 as 9736dbaf42ba444cbc0635031a0dd9c1 (p2, c1, k15).
+1655155087: Client mqtt_515b883d8e12 closed its connection.
+1655155089: New connection from 192.168.80.7:40348 on port 1883.
+1655155089: New client connected from 192.168.80.7:40348 as mqtt_160bf4a8703f (p2, c1, k60, u'emqx').
+1655155227: Client mqtt_160bf4a8703f closed its connection.
+1655155230: New connection from 192.168.80.7:40380 on port 1883.
+1655155230: New client connected from 192.168.80.7:40380 as mqtt_0188a9aca9da (p2, c1, k60, u'emqx').
+1655155763: Client mqtt_0188a9aca9da closed its connection.
+1655155764: New connection from 192.168.80.7:40448 on port 1883.
+1655155764: New client connected from 192.168.80.7:40448 as mqtt_4a44bcc61363 (p2, c1, k60, u'emqx').
+1655155795: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655155867: Client mqtt_4a44bcc61363 closed its connection.
+1655155873: New connection from 192.168.80.7:40486 on port 1883.
+1655155873: New client connected from 192.168.80.7:40486 as mqtt_b965bf2b6daf (p2, c1, k60, u'emqx').
+1655156132: Client mqtt_b965bf2b6daf closed its connection.
+1655156134: New connection from 192.168.80.7:40520 on port 1883.
+1655156134: New client connected from 192.168.80.7:40520 as mqtt_79e0ee8883ba (p2, c1, k60, u'emqx').
+1655156502: Client mqtt_79e0ee8883ba closed its connection.
+1655156505: New connection from 192.168.80.7:40554 on port 1883.
+1655156505: New client connected from 192.168.80.7:40554 as mqtt_fb1d2db08f9b (p2, c1, k60, u'emqx').
+1655156557: Client mqtt_fb1d2db08f9b closed its connection.
+1655156559: New connection from 192.168.80.7:40576 on port 1883.
+1655156559: New client connected from 192.168.80.7:40576 as mqtt_d1b5504eedbb (p2, c1, k60, u'emqx').
+1655156872: Client mqtt_d1b5504eedbb closed its connection.
+1655156876: New connection from 192.168.80.7:40614 on port 1883.
+1655156876: New client connected from 192.168.80.7:40614 as mqtt_4fe0a451e022 (p2, c1, k60, u'emqx').
+1655156948: Client mqtt_4fe0a451e022 closed its connection.
+1655156949: New connection from 192.168.80.7:40644 on port 1883.
+1655156949: New client connected from 192.168.80.7:40644 as mqtt_915e6129805a (p2, c1, k60, u'emqx').

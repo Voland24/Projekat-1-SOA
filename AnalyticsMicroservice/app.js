@@ -5,6 +5,19 @@ const mqtt = require('mqtt');
 const {InfluxDB} = require('@influxdata/influxdb-client')
 
 const {Point} = require('@influxdata/influxdb-client')
+const PROTO_PATH = 'definitions.proto';
+var grpc = require('@grpc/grpc-js');
+var protoLoader = require('@grpc/proto-loader');
+var packageDefinition = protoLoader.loadSync(
+    PROTO_PATH,
+    {keepCase: true,
+     longs: String,
+     enums: String,
+     defaults: true,
+     oneofs: true
+    });
+
+var hello_proto = grpc.loadPackageDefinition(packageDefinition).Library;    
 // {InfluxDB, Point} from '@influxdata/influxdb-client'
 //const influxClient = require('./influx_db')
 
@@ -21,6 +34,8 @@ const influxWriteAPI = influxDB.getWriteApi(org, bucket)
 const influxQueryAPI = influxDB.getQueryApi(org)
 
 influxWriteAPI.useDefaultTags({region: 'Serbia'})
+
+var clientGRPC = new hello_proto.LibraryService('http://notifications-service:50051', grpc.credentials.createInsecure())
 
 const app = express()
 
@@ -84,12 +99,19 @@ client.on('message', (topic, payload) =>{
 
     const fluxQuery = 'from(bucket:"Library") |> range(start: -30m) |> filter(fn: (r) => r._measurement == "bookQuery")|> filter(fn: (r) => r._field == "count")|> aggregateWindow(every: 15m, fn: mean)'
 
+
+    var forSendingInfo = ""
     const fluxObserver = {
         next(row, tableMeta) {
           const o = tableMeta.toObject(row)
+          const stringPayload = `${o._time} ${o._measurement} in ${o.region} (${o.sensor_id}): ${o._field}=${o._value}`
           console.log(
-            `${o._time} ${o._measurement} in ${o.region} (${o.sensor_id}): ${o._field}=${o._value}`
+           stringPayload
           )
+          
+          if(o._value != null && o._value >= 2)
+                forSendingInfo = stringPayload
+          
         },
         error(error) {
           console.error(error)
@@ -97,6 +119,14 @@ client.on('message', (topic, payload) =>{
         },
         complete() {
           console.log('\nFinished SUCCESS')
+          if(forSendingInfo != "")
+          {
+            clientGRPC.listBookQueries({info: stringPayload}, function(err,response){
+                console.log('Status: ' + response)
+                forSendingInfo = ""
+              })
+
+          }
         }
       }
       
