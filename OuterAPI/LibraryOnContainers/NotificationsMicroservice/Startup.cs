@@ -31,7 +31,7 @@ namespace NotificationsMicroservice
 
 			app.UseEndpoints(endpoints =>
 			{
-				endpoints.MapGrpcService<GreeterService>();
+				endpoints.MapGrpcService<AlertService>();
 
 				endpoints.MapGet("/", async context =>
 				{

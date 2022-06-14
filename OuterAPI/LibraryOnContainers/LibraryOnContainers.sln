@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "APIGateway\APIGateway.csproj", "{E17E2476-EE3A-4B8D-B5AD-56062ADAC27B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationsMicroservice", "NotificationsMicroservice\NotificationsMicroservice.csproj", "{0850F74A-F908-4FF1-AF09-BB5E92892FA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationsMicroservice", "NotificationsMicroservice\NotificationsMicroservice.csproj", "{0850F74A-F908-4FF1-AF09-BB5E92892FA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcTestApp", "GrpcTestApp\GrpcTestApp.csproj", "{F9704076-6B59-4E75-988B-74410715362C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0850F74A-F908-4FF1-AF09-BB5E92892FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0850F74A-F908-4FF1-AF09-BB5E92892FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0850F74A-F908-4FF1-AF09-BB5E92892FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9704076-6B59-4E75-988B-74410715362C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9704076-6B59-4E75-988B-74410715362C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9704076-6B59-4E75-988B-74410715362C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9704076-6B59-4E75-988B-74410715362C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

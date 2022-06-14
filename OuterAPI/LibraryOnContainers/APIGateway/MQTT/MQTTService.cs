@@ -39,7 +39,7 @@ namespace APIGateway.MQTT
 				await Connect();
 			var applicationMessage = new MqttApplicationMessageBuilder()
 					.WithTopic("soa/bookQueries")
-					.WithPayload(JsonSerializer.Serialize(mqttEvent, ))
+					.WithPayload(JsonSerializer.Serialize(mqttEvent, _jsonSerializerOptions))
 					.Build();
 
 			await _mqttClient.PublishAsync(applicationMessage, CancellationToken.None);
