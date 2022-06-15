@@ -73,6 +73,7 @@ services:
     depends_on:
      - mosquitto
      - influx_db  
+     - notifications-service
 
   #InfluxDB service
   influx_db:
@@ -85,7 +86,7 @@ services:
        - ./influxdb/data:/var/lib/influxdb
        - ./influxdb/influxdb.conf:/etc/influxdb/influxdb.conf:ro
        - ./influxdb/init:/docker-entrypoint-initdb.d
-  
+
   notifications-service:
     container_name: notifications-service
     build:

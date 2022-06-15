@@ -17,11 +17,12 @@ var packageDefinition = protoLoader.loadSync(
      oneofs: true
     });
 
-var hello_proto = grpc.loadPackageDefinition(packageDefinition).alert;
+var alertpkg = grpc.loadPackageDefinition(packageDefinition).alert;
 // {InfluxDB, Point} from '@influxdata/influxdb-client'
 //const influxClient = require('./influx_db')
 
-var API_TOKEN = "4WoeHDJpvSWSxD8lCFFFlmSRet2Or3AnVEJFV34P6A4gdoTiEAiSdyOuMbORPXcn5_Pm9xMIOCrFw4AizLg6CA=="
+//var API_TOKEN = "4WoeHDJpvSWSxD8lCFFFlmSRet2Or3AnVEJFV34P6A4gdoTiEAiSdyOuMbORPXcn5_Pm9xMIOCrFw4AizLg6CA=="
+var API_TOKEN = "nlC8pHS3ygcVhCshVaaN9U5pVoF3vuValmf1hOLb1agk6l1754Yn6rtK_A-VPeDefIMdHrgY8uOp75C9t1kyuw=="
 var url = "http://influx_db:8086"
 var org = "Studenti"
 var bucket = "Library"
@@ -35,7 +36,7 @@ const influxQueryAPI = influxDB.getQueryApi(org)
 
 influxWriteAPI.useDefaultTags({region: 'Serbia'})
 
-var clientGRPC = new hello_proto.AlertService('http://notifications-service:50051', grpc.credentials.createInsecure())
+var clientGRPC = new alertpkg.AlertService('notifications-service:80', grpc.credentials.createInsecure())
 
 const app = express()
 
@@ -109,7 +110,7 @@ client.on('message', (topic, payload) =>{
            stringPayload
           )
           
-          if(o._value != null && o._value >= 2)
+          if(o._value != null && o._value >= 0)
                 forSendingInfo = stringPayload
           
         },
@@ -121,28 +122,28 @@ client.on('message', (topic, payload) =>{
           console.log('\nFinished SUCCESS')
           if(forSendingInfo != "")
           {
-            clientGRPC.QueryFluxAlert({info: stringPayload}, function(err,response){
-                console.log('Status: ' + response)
-                forSendingInfo = ""
+            clientGRPC.QueryFluxAlert({info: forSendingInfo}, function(err,response){
+                if (err) {
+                    console.log("Error: " + err)
+                }
+                else {
+                    console.log('Status: ' + JSON.stringify(response))
+                    forSendingInfo = ""
+                }
               })
 
           }
         }
       }
       
-      /** Execute a query and receive line table metadata and rows. */
-      influxQueryAPI.queryRows(fluxQuery, fluxObserver)
-
+    /** Execute a query and receive line table metadata and rows. */
     const point1 = new Point('bookQuery')
                 .tag('region', 'Serbia')
                 .floatField('count',jsonPayload["count"] )
                 .stringField('which', jsonPayload["which"])
-
     influxWriteAPI.writePoint(point1)
 
-
-    
-
+    influxQueryAPI.queryRows(fluxQuery, fluxObserver)
     /*influxWriteAPI.close().then(() => {
          console.log('WRITE FINISHED')
     })  */          

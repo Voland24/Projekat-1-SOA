@@ -480,3 +480,58 @@
 1655250332: New client connected from 172.19.0.9:56690 as mqtt_1cacff9b7587 (p2, c1, k60, u'emqx').
 1655250840: mosquitto version 2.0.14 terminating
 1655250840: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655296877: mosquitto version 2.0.14 starting
+1655296877: Config loaded from /mosquitto/config/mosquitto.conf.
+1655296877: Opening ipv4 listen socket on port 1883.
+1655296877: Opening ipv6 listen socket on port 1883.
+1655296877: mosquitto version 2.0.14 running
+1655296889: New connection from 172.19.0.10:59422 on port 1883.
+1655296889: New client connected from 172.19.0.10:59422 as 7a4984dd-eca8-11ec-8652-0242ac13000a (p1, c0, k30).
+1655296889: New connection from 172.19.0.10:59424 on port 1883.
+1655296889: New client connected from 172.19.0.10:59424 as 7a4a0af0-eca8-11ec-8652-0242ac13000a (p1, c0, k30).
+1655296889: New connection from 172.19.0.9:38224 on port 1883.
+1655296889: New client connected from 172.19.0.9:38224 as mqtt_d8599e934553 (p2, c1, k60, u'emqx').
+1655297198: New connection from 172.19.0.8:33070 on port 1883.
+1655297198: New client connected from 172.19.0.8:33070 as ca314ce7614f4922acd9a3d6c397a619 (p2, c1, k15).
+1655297235: Client mqtt_d8599e934553 closed its connection.
+1655297241: New connection from 172.19.0.9:38284 on port 1883.
+1655297241: New client connected from 172.19.0.9:38284 as mqtt_282b17c4b36d (p2, c1, k60, u'emqx').
+1655297774: Client mqtt_282b17c4b36d closed its connection.
+1655297778: New connection from 172.19.0.9:38304 on port 1883.
+1655297778: New client connected from 172.19.0.9:38304 as mqtt_ede77e13ef2c (p2, c1, k60, u'emqx').
+1655297789: Client mqtt_ede77e13ef2c closed its connection.
+1655297997: Client 7a4a0af0-eca8-11ec-8652-0242ac13000a disconnected.
+1655297997: Client 7a4984dd-eca8-11ec-8652-0242ac13000a disconnected.
+1655297997: New connection from 172.19.0.10:59558 on port 1883.
+1655297997: New client connected from 172.19.0.10:59558 as 0edcfc3a-ecab-11ec-8652-0242ac13000a (p1, c0, k30).
+1655297997: New connection from 172.19.0.10:59560 on port 1883.
+1655297997: New client connected from 172.19.0.10:59560 as 0edd88d7-ecab-11ec-8652-0242ac13000a (p1, c0, k30).
+1655298078: New connection from 172.19.0.10:59622 on port 1883.
+1655298078: New client connected from 172.19.0.10:59622 as 3f3faa04-ecab-11ec-8652-0242ac13000a (p1, c0, k30).
+1655298078: New connection from 172.19.0.10:59624 on port 1883.
+1655298078: New client connected from 172.19.0.10:59624 as 3f401051-ecab-11ec-8652-0242ac13000a (p1, c0, k30).
+1655298181: New connection from 172.19.0.9:38432 on port 1883.
+1655298181: New client connected from 172.19.0.9:38432 as mqtt_0a3bd77a30d7 (p2, c1, k60, u'emqx').
+1655298472: Client mqtt_0a3bd77a30d7 closed its connection.
+1655298475: New connection from 172.19.0.9:38474 on port 1883.
+1655298475: New client connected from 172.19.0.9:38474 as mqtt_14072dbd01bc (p2, c1, k60, u'emqx').
+1655298673: Client mqtt_14072dbd01bc closed its connection.
+1655298678: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655298679: New connection from 172.19.0.9:38510 on port 1883.
+1655298679: New client connected from 172.19.0.9:38510 as mqtt_711316e8b5b7 (p2, c1, k60, u'emqx').
+1655300479: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655301365: Client mqtt_711316e8b5b7 closed its connection.
+1655301368: New connection from 172.19.0.9:38632 on port 1883.
+1655301368: New client connected from 172.19.0.9:38632 as mqtt_70340a8e3f9b (p2, c1, k60, u'emqx').
+1655301817: Client mqtt_70340a8e3f9b closed its connection.
+1655301851: New connection from 172.19.0.9:38678 on port 1883.
+1655301851: New client connected from 172.19.0.9:38678 as mqtt_d35c1c5cbbbc (p2, c1, k60, u'emqx').
+1655302280: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1655302460: Client mqtt_d35c1c5cbbbc closed its connection.
+1655302460: Client 3f401051-ecab-11ec-8652-0242ac13000a closed its connection.
+1655302460: Client 3f3faa04-ecab-11ec-8652-0242ac13000a closed its connection.
+1655302460: Client 0edd88d7-ecab-11ec-8652-0242ac13000a closed its connection.
+1655302460: Client 0edcfc3a-ecab-11ec-8652-0242ac13000a closed its connection.
+1655302460: Client ca314ce7614f4922acd9a3d6c397a619 closed its connection.
+1655302461: mosquitto version 2.0.14 terminating
+1655302461: Saving in-memory database to /mosquitto/data//mosquitto.db.

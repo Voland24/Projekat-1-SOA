@@ -17,10 +17,10 @@ namespace NotificationsMicroservice
 
 		public override Task<Alert.StatusMessage> QueryFluxAlert(Alert.QueryFluxInfo request, ServerCallContext context)
 		{
-			_logger.LogDebug("Alert method invoked!");
+			_logger.LogInformation("Alert method invoked!");
 			return Task.FromResult(new Alert.StatusMessage
 			{
-				ResultInfo = "Success"
+				ResultInfo = "Success!"
 			});
 		}
 	}
