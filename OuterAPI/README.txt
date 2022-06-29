@@ -1,1 +1,0 @@
-Outer API u ASP.NET, slobodno menjaj imena i sl. ovo je čisto da imamo foldere lepo
