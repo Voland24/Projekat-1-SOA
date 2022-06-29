@@ -1,0 +1,33 @@
+name: "PowerConsumptionSensorCluster"
+manufacturer: "Raspberry Pi Foundation"
+model: "Raspberry Pi 3b+"
+labels:
+  - "rpi"
+description: "Sensor cluster providing metrics for power consumption"
+
+deviceResources:
+      -
+        name: office
+        description: "Sensor cluster home office power consumption values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "1000", size: "4", LSB: "true", defaultValue: "0"}
+      -
+        name: fridge
+        description: "Sensor cluster fridge power consumption values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "1000", size: "4", LSB: "true", defaultValue: "0"}
+      -
+        name: furnace
+        description: "Sensor cluster furnace power consumption values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "3000", size: "4", LSB: "true", defaultValue: "0"}
+      -
+        name: dishwasher
+        description: "Sensor cluster dishwasher power consumption values"
+        properties:
+            value:
+             { type: "Int64", readWrite: "RW", minimum: "0", maximum: "1500", size: "4", LSB: "true", defaultValue: "0"}
+

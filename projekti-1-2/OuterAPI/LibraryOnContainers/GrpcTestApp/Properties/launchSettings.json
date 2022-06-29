@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "GrpcTestApp": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

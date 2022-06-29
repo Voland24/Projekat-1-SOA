@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package alert;
+
+service AlertService {
+    rpc QueryFluxAlert(QueryFluxInfo) returns (StatusMessage) {}
+}
+
+message QueryFluxInfo {
+    string info = 1;
+}
+
+message StatusMessage {
+    string resultInfo = 1;
+}
