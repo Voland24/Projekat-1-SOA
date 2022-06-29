@@ -13,7 +13,7 @@ def loadData(filename: str) -> list:
         data = list(csv.reader(f, delimiter=","))
     return data
 
-data = loadData('./data/HomeC.csv')[165:500] # power consumption
+data = loadData('./data/HomeC-1.csv')[165:500] # power consumption
 
 for row in data:
     row = [int(1000*float(x)) for x in row[4:9]]
