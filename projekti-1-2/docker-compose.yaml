@@ -2,7 +2,6 @@ version : '3.9'
 
 services:
   gateway:
-    container_name: gateway
     build:
       context: ./OuterAPI/LibraryOnContainers
       dockerfile: ./APIGateway/Dockerfile
@@ -12,7 +11,6 @@ services:
      - mosquitto
      - data-service
   mosquitto:
-    container_name: mosquitto
     image: eclipse-mosquitto
     ports:
       - 1883:1883
@@ -23,7 +21,6 @@ services:
       - ./mosquitto/data:/mosquitto/data
   ekuiper:
     image: lfedge/ekuiper:1.5-slim
-    container_name: ekuiper
     depends_on:
       - mosquitto
     ports:
@@ -32,12 +29,10 @@ services:
       - ekuiper:/kuiper/data
   ekuiper-manager:
     image: emqx/ekuiper-manager:1.5
-    container_name: ekuiper-manager
     ports:
       - "9082:9082"
   # Nodejs service
   data-service:
-    container_name: nodejs
     build: ./InnerAPINode
     ports: 
       - "8080:8080"
@@ -50,11 +45,10 @@ services:
       WAIT_HOSTS_TIMEOUT: 300
       WAIT_SLEEP_INTERVAL: 30
       WAIT_HOST_CONNECT_TIMEOUT: 30
-      MONGODB_CONNSTRING: mongodb://mongo:27017/books
+      MONGODB_CONNSTRING: mongodb://mongo_db:27017/books
   
   #MongoDB service
   mongo_db:
-    container_name: mongo
     image: mongo:latest
     restart: always
     #dns:
@@ -66,7 +60,6 @@ services:
 
   #Analytics Node service
   analytics-service:
-    container_name: analyticsNodeService
     build: ./AnalyticsMicroservice
     ports:
       - "5003:5003"
@@ -77,7 +70,6 @@ services:
 
   #InfluxDB service
   influx_db:
-    container_name: influx-db
     image: influxdb:latest
     restart: always
     ports: 
@@ -88,7 +80,6 @@ services:
        - ./influxdb/init:/docker-entrypoint-initdb.d
 
   notifications-service:
-    container_name: notifications-service
     build:
       context: ./OuterAPI/LibraryOnContainers
       dockerfile: ./NotificationsMicroservice/Dockerfile
@@ -96,6 +87,10 @@ services:
      - 50051:80
 
 volumes:
-  mongo_db: {}
-  ekuiper: {}
-  influx_db: {}
+  mongo_db:
+    external:
+      name: projekat-1-soa_mongo_db
+  ekuiper:
+    external:
+      name: projekat-1-soa_ekuiper
+  influx_db:

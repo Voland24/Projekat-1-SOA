@@ -22,7 +22,8 @@ var alertpkg = grpc.loadPackageDefinition(packageDefinition).alert;
 //const influxClient = require('./influx_db')
 
 //var API_TOKEN = "4WoeHDJpvSWSxD8lCFFFlmSRet2Or3AnVEJFV34P6A4gdoTiEAiSdyOuMbORPXcn5_Pm9xMIOCrFw4AizLg6CA=="
-var API_TOKEN = "nlC8pHS3ygcVhCshVaaN9U5pVoF3vuValmf1hOLb1agk6l1754Yn6rtK_A-VPeDefIMdHrgY8uOp75C9t1kyuw=="
+//var API_TOKEN = "nlC8pHS3ygcVhCshVaaN9U5pVoF3vuValmf1hOLb1agk6l1754Yn6rtK_A-VPeDefIMdHrgY8uOp75C9t1kyuw=="
+var API_TOKEN = 'dBkruiuBrNl4R-3O7eIWNKOdfCiCIxkFfUNbxOIWIhKtnkuYsuqZ4ro2VxWChDWLNRhZfA7i7k0U2RU4N5bqRg=='
 var url = "http://influx_db:8086"
 var org = "Studenti"
 var bucket = "Library"

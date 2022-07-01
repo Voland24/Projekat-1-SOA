@@ -378,7 +378,7 @@ services:
       - "5003:5003"
     depends_on:
      - mosquitto
-     - influx_db
+     - influx-db
     networks:
       - edgex-network
 
