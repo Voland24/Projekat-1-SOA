@@ -1,0 +1,5 @@
+Sve projekte pokrenuti sa docker compose --build
+
+U docker compose fajlovima postoje tačne IP adrese i portovi svih aplikacija.
+
+U priloženoj Postman kolekciji su REST zahtevi koji se mogu okinuti radi testiranja rada aplikacije.
